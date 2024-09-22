@@ -1,9 +1,57 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Dobrodošli u Zoološki Vrt!</h1>
-    <p>Ovdje ćete pronaći informacije o životinjama, nastambama, radnicima i svim ostalim važnim informacijama vezanim uz naš zoološki vrt.</p>
-    <ul>
-        <li><a href="{% url 'nastamba_list' %}">Upravljanje</a></li>
-    </ul>
+<style>
+    body {
+        background-image: url("https://c4.wallpaperflare.com/wallpaper/362/88/44/african-safari-animals-trees-sunset-grass-clouds-nature-landscape-wallpaper-preview.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #ffffff; /* Ensures text is readable */
+    }
+
+    main {
+        background-color: rgba(0, 0, 0, 0.6); /* Adds a transparent overlay for better readability */
+        padding: 20px;
+        border-radius: 8px;
+    }
+</style>
+<div class="text-center mb-5">
+    <h1 class="mb-4">Dobrodošli u Zoološki Vrt!</h1>
+    <p class="lead">U ovom sustavu možete upravljati svim važnim aspektima zoološkog vrta, uključujući životinje, nastambe, radnike, obaveze i izvještaje. Brzo pristupite podacima i zadacima kako biste osigurali efikasno i kvalitetno poslovanje.</p>
+</div>
+
+<div class="container">
+    <!-- Overview Section -->
+    <div class="row text-center mb-5">
+        <div class="col-md-6">
+            <h3 class="mb-3">Upravljanje Nastambama</h3>
+            <p>Pratite detalje o svakoj nastambi, uključujući njihove veličine, vrstu nastambe i trenutne životinje smještene unutar njih. Upravljajte povijesti nastambi kako biste uvijek imali uvid u promjene.</p>
+        </div>
+        <div class="col-md-6">
+            <h3 class="mb-3">Upravljanje Životinjama</h3>
+            <p>Pregledajte sve životinje u našem zoološkom vrtu, uključujući njihove vrste, starost, zdravstveno stanje i povijest smještaja. Redovito ažurirajte njihove profile i zabilješke.</p>
+        </div>
+    </div>
+
+    <!-- Worker and Tasks Section -->
+    <div class="row text-center mb-5">
+        <div class="col-md-6">
+            <h3 class="mb-3">Radnici</h3>
+            <p>Vodite računa o rasporedima radnika, njihovim zaduženjima i radnom učinku. Osigurajte pravovremeno delegiranje zadataka i praćenje zaduženja kako bi vrt funkcionirao bez zastoja.</p>
+        </div>
+        <div class="col-md-6">
+            <h3 class="mb-3">Obveze i Zadaci</h3>
+            <p>Upravljajte svakodnevnim zadacima i obvezama, osiguravajući da svi zadaci budu pravovremeno dovršeni. Redovito pratite status obveza i obavještavajte o dovršenim zadacima.</p>
+        </div>
+    </div>
+
+    <!-- Reports Section -->
+    <div class="row text-center">
+        <div class="col-md-12">
+            <h3 class="mb-3">Izvještaji i Statistika</h3>
+            <p>Generirajte izvještaje o svim segmentima zoološkog vrta, uključujući financijske podatke, učinkovitost radnika i status nastambi. Pogledajte detaljne statistike kako biste bolje upravljali resursima.</p>
+        </div>
+    </div>
+</div>
 {% endblock %}

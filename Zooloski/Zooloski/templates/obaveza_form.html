@@ -3,11 +3,51 @@
 {% block title %}Dodaj Obvezu{% endblock %}
 
 {% block content %}
-    <h2>Dodaj novu obvezu</h2>
-    <form method="POST">
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Dodaj novu obvezu</h2>
+    <form method="POST" class="p-4 shadow-sm bg-light rounded">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Spremi obvezu</button>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-lg mt-3">Spremi obvezu</button>
+        </div>
     </form>
-    <a href="{% url 'obaveza_list' %}">Natrag na listu obveza</a>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'obaveza_list' %}" class="btn btn-secondary">Natrag na listu obveza</a>
+    </div>
+</div>
+
+<style>
+    /* Styling the form */
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Style the submit button */
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    /* Styling the "Natrag na listu obveza" button */
+    .btn-secondary {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        text-decoration: none;
+    }
+</style>
 {% endblock %}

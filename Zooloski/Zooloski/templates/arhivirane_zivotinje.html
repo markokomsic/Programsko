@@ -3,17 +3,62 @@
 {% block title %}Arhivirane Životinje{% endblock %}
 
 {% block content %}
-    <h2>Popis Arhiviranih Životinja</h2>
-    <ul>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Popis Arhiviranih Životinja</h2>
+
+    {% if arhivirane %}
+    <ul class="list-group">
         {% for zivotinja in arhivirane %}
-            <li>
-                <a href="{% url 'zivotinja_detail' zivotinja.id %}">
-                    {{ zivotinja.hrvatski_naziv }} - {{ zivotinja.ime }}
-                </a>
-            </li>
-        {% empty %}
-            <li>Nema arhiviranih životinja.</li>
+        <li class="list-group-item">
+            <a href="{% url 'zivotinja_detail' zivotinja.id %}" class="zivotinja-link">
+                {{ zivotinja.hrvatski_naziv }} - {{ zivotinja.ime }}
+            </a>
+        </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'zivotinja_list' %}">Natrag na popis životinja</a>
+    {% else %}
+    <p class="text-center">Nema arhiviranih životinja.</p>
+    {% endif %}
+
+    <div class="text-center mt-4">
+        <a href="{% url 'zivotinja_list' %}" class="btn btn-secondary">Natrag na popis životinja</a>
+    </div>
+</div>
+
+<style>
+    /* Styling the list */
+    .list-group-item {
+        font-size: 18px;
+        padding: 15px;
+        transition: background-color 0.3s ease;
+    }
+
+    .list-group-item:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Styling the links */
+    .zivotinja-link {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .zivotinja-link:hover {
+        color: #0056b3;
+    }
+
+    /* Button Styling */
+    .btn-secondary {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        text-decoration: none;
+    }
+</style>
 {% endblock %}

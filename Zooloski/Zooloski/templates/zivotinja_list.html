@@ -3,23 +3,91 @@
 {% block title %}Životinje{% endblock %}
 
 {% block content %}
-    <h2>Popis Životinja</h2>
-    
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Popis Životinja</h2>
+
     {% if zivotinje %}
-        <ul>
-            {% for zivotinja in zivotinje %}
-                <li>
-                    <a href="{% url 'zivotinja_detail' zivotinja.id %}">
-                        {{ zivotinja.ime }} ({{ zivotinja.hrvatski_naziv }})</a>
-                    <a href="{% url 'zivotinja_update' zivotinja.id %}">Uredi</a>
-                    <a href="{% url 'zivotinja_archive' zivotinja.id %}">Arhiviraj</a>
-                </li>
-            {% endfor %}
-        </ul>
+    <ul class="list-group">
+        {% for zivotinja in zivotinje %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>
+                        <a href="{% url 'zivotinja_detail' zivotinja.id %}" class="zivotinja-link">{{ zivotinja.ime }} ({{ zivotinja.hrvatski_naziv }})</a>
+                    </span>
+            <span>
+                        <a href="{% url 'zivotinja_update' zivotinja.id %}" class="btn btn-warning btn-sm">Uredi</a>
+                        <a href="{% url 'zivotinja_archive' zivotinja.id %}" class="btn btn-danger btn-sm">Arhiviraj</a>
+                    </span>
+        </li>
+        {% endfor %}
+    </ul>
     {% else %}
-        <p>Nema unesenih životinja.</p>
-        <a href="{% url 'zivotinja_create' %}">Dodaj novu životinju</a>
+    <p class="text-center">Nema unesenih životinja.</p>
+    <div class="text-center">
+        <a href="{% url 'zivotinja_create' %}" class="btn btn-primary">Dodaj novu životinju</a>
+    </div>
     {% endif %}
-    <a href="{% url 'zivotinja_create' %}">Dodaj novu životinju</a></br>
-    <a href="{% url 'arhivirane_zivotinje' %}">Arhivirane životinje</a>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'zivotinja_create' %}" class="btn btn-primary">Dodaj novu životinju</a>
+        <a href="{% url 'arhivirane_zivotinje' %}" class="btn btn-secondary ml-2">Arhivirane životinje</a>
+    </div>
+</div>
+
+<style>
+    /* Styling the animal list */
+    .list-group-item {
+        font-size: 18px;
+        padding: 15px;
+        transition: background-color 0.3s ease;
+    }
+
+    .list-group-item:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Styling the links */
+    .zivotinja-link {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .zivotinja-link:hover {
+        color: #0056b3;
+    }
+
+    /* Button Styling */
+    .btn-warning {
+        background-color: #ffc107;
+        color: white;
+        border: none;
+    }
+
+    .btn-warning:hover {
+        background-color: #e0a800;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+    .btn-primary {
+        padding: 10px 20px;
+    }
+
+    .btn-secondary {
+        padding: 10px 20px;
+    }
+
+    .ml-2 {
+        margin-left: 10px;
+    }
+</style>
 {% endblock %}

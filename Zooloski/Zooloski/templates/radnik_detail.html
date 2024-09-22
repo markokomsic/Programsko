@@ -1,11 +1,46 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Detalji o radniku: {{ radnik.ime }} {{ radnik.prezime }}</h2>
-<p><strong>Ime:</strong> {{ radnik.ime }}</p>
-<p><strong>Prezime:</strong> {{ radnik.prezime}}</p>
-<p><strong>Kontakt:</strong> {{ radnik.kontakt }}</p>
-<p><strong>Obrazovanje:</strong> {{ radnik.obrazovanje }}</p>
-<p><strong>Sposobnost:</strong> {{ radnik.sposobnost }}</p>
-<a href="{% url 'radnik_list' %}">Natrag na popis radnika</a>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Detalji o radniku: {{ radnik.ime }} {{ radnik.prezime }}</h2>
+
+    <div class="card p-4 shadow-sm">
+        <p><strong>Ime:</strong> {{ radnik.ime }}</p>
+        <p><strong>Prezime:</strong> {{ radnik.prezime }}</p>
+        <p><strong>Kontakt:</strong> {{ radnik.kontakt }}</p>
+        <p><strong>Obrazovanje:</strong> {{ radnik.obrazovanje }}</p>
+        <p><strong>Sposobnost:</strong> {{ radnik.sposobnost }}</p>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'radnik_list' %}" class="btn btn-secondary">Natrag na popis radnika</a>
+    </div>
+</div>
+
+<style>
+    /* Center the container and add spacing */
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Style the card */
+    .card {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        border: none;
+    }
+
+    /* Styling the back button */
+    .btn-secondary {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        text-decoration: none;
+    }
+</style>
 {% endblock %}

@@ -1,14 +1,64 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Detalji o nastambi: {{ nastamba.ime }}</h2>
-<p><strong>Vrsta:</strong> {{ nastamba.vrsta }}</p>
-<p><strong>Centralna točka:</strong> ({{ nastamba.centralna_tocka_lat }}, {{ nastamba.centralna_tocka_lng }})</p>
-<p><strong>Opis:</strong> {{ nastamba.opis }}</p>
-<p><strong>Biljke:</strong> {{ nastamba.biljke }}</p>
-<p><strong>Stabla:</strong> {{ nastamba.stabla }}</p>
-<p><strong>Sekundarne životinje:</strong> {{ nastamba.sekundarne_zivotinje }}</p>
-<p><strong>Evidencija prisutnosti:</strong> {{ nastamba.evidencija_prisutnosti }}</p>
-<a href="{% url 'nastamba_update' nastamba.id %}">Uredi</a>
-<a href="{% url 'nastamba_list' %}">Natrag na popis nastambi</a>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Detalji o nastambi: {{ nastamba.ime }}</h2>
+
+    <div class="card p-4 shadow-sm">
+        <p><strong>Vrsta:</strong> {{ nastamba.vrsta }}</p>
+        <p><strong>Centralna točka:</strong> ({{ nastamba.centralna_tocka_lat }}, {{ nastamba.centralna_tocka_lng }})</p>
+        <p><strong>Opis:</strong> {{ nastamba.opis }}</p>
+        <p><strong>Biljke:</strong> {{ nastamba.biljke }}</p>
+        <p><strong>Stabla:</strong> {{ nastamba.stabla }}</p>
+        <p><strong>Sekundarne životinje:</strong> {{ nastamba.sekundarne_zivotinje }}</p>
+        <p><strong>Evidencija prisutnosti:</strong> {{ nastamba.evidencija_prisutnosti }}</p>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'nastamba_update' nastamba.id %}" class="btn btn-warning">Uredi</a>
+        <a href="{% url 'nastamba_list' %}" class="btn btn-secondary ml-2">Natrag na popis nastambi</a>
+    </div>
+</div>
+
+<style>
+    /* Center the container and add spacing */
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Style the card */
+    .card {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        border: none;
+    }
+
+    /* Button Styling */
+    .btn-warning {
+        background-color: #ffc107;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .btn-warning:hover {
+        background-color: #e0a800;
+    }
+
+    .btn-secondary {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+    .ml-2 {
+        margin-left: 10px;
+    }
+</style>
 {% endblock %}

@@ -2,12 +2,42 @@
 {% block title %}Radnici{% endblock %}
 
 {% block content %}
-    <h2>Popis radnika</h2>
-    <ul>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Popis Radnika</h2>
+    <ul class="list-group">
         {% for radnik in radnici %}
-            <li>
-                    <a href = "{% url 'radnik_detail' radnik.id %}">{{ radnik.ime }} {{ radnik.prezime }}</a>
-            </li>
+        <li class="list-group-item">
+            <a href="{% url 'radnik_detail' radnik.id %}" class="radnik-link">{{ radnik.ime }} {{ radnik.prezime }}</a>
+        </li>
         {% endfor %}
     </ul>
+</div>
+
+<style>
+    /* Styling the list */
+    .list-group-item {
+        font-size: 18px;
+        padding: 15px;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Hover effect for list items */
+    .list-group-item:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Styling the links */
+    .radnik-link {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+        transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    /* Hover effect for the links */
+    .radnik-link:hover {
+        color: #0056b3;
+        transform: translateY(-2px);
+    }
+</style>
 {% endblock %}

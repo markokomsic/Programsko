@@ -3,23 +3,69 @@
 {% block title %}Popis Obaveza{% endblock %}
 
 {% block content %}
-    <h2>Popis Obaveza</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Popis Obaveza</h2>
 
-    <ul>
+    <ul class="list-group mb-4">
         {% for obaveza in obaveze %}
-            <li class="{% if obaveza.status == 'Obavljeno' %}completed-task{% endif %}">
-                {{ obaveza.vrsta_obaveze }} za {{ obaveza.zivotinja }} - Status: {{ obaveza.status }} - Datum: {{ obaveza.datum }}
-                {% if obaveza.status != 'Obavljeno' %}
-                    <form method="POST" action="{% url 'obaveza_complete' obaveza.id %}" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit">Označi kao obavljeno</button>
-                    </form>
-                {% endif %}
-            </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center {% if obaveza.status == 'Obavljeno' %}completed-task{% endif %}">
+                <span>
+                    <strong>{{ obaveza.vrsta_obaveze }}</strong> za <em>{{ obaveza.zivotinja }}</em> - Status: <strong>{{ obaveza.status }}</strong> - Datum: {{ obaveza.datum }}
+                </span>
+            {% if obaveza.status != 'Obavljeno' %}
+            <form method="POST" action="{% url 'obaveza_complete' obaveza.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success btn-sm">Označi kao obavljeno</button>
+            </form>
+            {% endif %}
+        </li>
         {% empty %}
-            <li>Trenutno nema obaveza.</li>
+        <li class="list-group-item">Trenutno nema obaveza.</li>
         {% endfor %}
     </ul>
 
-    <a href="{% url 'obaveza_create' %}">Dodaj novu obavezu</a>
+    <div class="text-center">
+        <a href="{% url 'obaveza_create' %}" class="btn btn-primary">Dodaj novu obavezu</a>
+    </div>
+</div>
+
+<style>
+    /* Style for the completed tasks */
+    .completed-task {
+        text-decoration: line-through;
+        color: grey;
+    }
+
+    /* Styling for task list items */
+    .list-group-item {
+        font-size: 16px;
+        padding: 15px;
+        transition: background-color 0.3s ease;
+    }
+
+    .list-group-item:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Styling for the buttons */
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    /* Styling for the "Dodaj novu obavezu" button */
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
 {% endblock %}
