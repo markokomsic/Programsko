@@ -1,4 +1,4 @@
-#ZOO Management APP koncept
+# ZOO Management APP koncept
 
 1. Nastambe
 Vrste: Mračne, Grijane, Osunčane
@@ -21,3 +21,18 @@ Grupne Posjete: Evidencija, Određivanje vodiča (kvalificirani i dostupni radni
 Nezgode: Vrsta, Utjecaj, Nastambe i životinje uključene, Komentari, Troškovi sanacije
 5. Izvještaji
 Generiranje: Troškovi po životinjama, Troškovi po dobavljačima, Histogram radnih sati
+---
+## Pokretanje projekta
+### 1. Klonirajte repozitorij:
+    git clone https://github.com/markokomsic/Programsko.git
+    cd Programsko
+### 2. Instalirajte pipenv
+    pip install pipenv
+### 3. Kreirajte virtualno okruženje i instalirajte ovisnosti
+    pipenv install --dev
+### 4. Aktivirajte virtualno okruženje
+    pipenv shell
+### 5. Migrirajte bazu podataka
+    python manage.py migrate
+### 6. Pokrenite razvojni server
+    python manage.py runserver
