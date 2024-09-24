@@ -164,7 +164,7 @@ def obaveza_complete(request, id):
     return redirect('obaveza_list')
 
 def izvjesca(request):
-    return render(request,'Izvjesca.html')
+    return render(request,'izvjesca.html')
 
 def nezgoda_list(request):
     nezgoda_values = Nezgoda.objects.all()
