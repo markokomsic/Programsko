@@ -36,3 +36,5 @@ Generiranje: Troškovi po životinjama, Troškovi po dobavljačima, Histogram r
     python manage.py migrate
 ### 6. Pokrenite razvojni server
     python manage.py runserver
+
+APLIKACIJA JE TAKOĐER HOSTANA NA https://markokomsic.pythonanywhere.com/zooloski/
