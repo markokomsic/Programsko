@@ -13,8 +13,12 @@
                         {{ nastamba.vrsta }} - {{ nastamba.ime }}
                     </a>
                 </span>
-            <span>
+                <span>
                     <a href="{% url 'nastamba_update' nastamba.id %}" class="btn btn-warning btn-sm">Uredi</a>
+                    <form method="POST" action="{% url 'nastamba_delete' nastamba.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Obriši</button>
+                    </form>
                 </span>
         </li>
         {% endfor %}
