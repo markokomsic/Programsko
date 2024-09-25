@@ -12,12 +12,18 @@
                 <span>
                     <strong>{{ obaveza.vrsta_obaveze }}</strong> za <em>{{ obaveza.zivotinja }}</em> - Status: <strong>{{ obaveza.status }}</strong> - Datum: {{ obaveza.datum }}
                 </span>
-            {% if obaveza.status != 'Obavljeno' %}
-            <form method="POST" action="{% url 'obaveza_complete' obaveza.id %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-success btn-sm">Označi kao obavljeno</button>
-            </form>
-            {% endif %}
+                <div>
+                    {% if obaveza.status != 'Obavljeno' %}
+                    <form method="POST" action="{% url 'obaveza_complete' obaveza.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success btn-sm">Označi kao obavljeno</button>
+                    </form>
+                    {% endif %}
+                    <form method="POST" action="{% url 'obaveza_delete' obaveza.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Obriši</button>
+                    </form>
+                </div>
         </li>
         {% empty %}
         <li class="list-group-item">Trenutno nema obaveza.</li>

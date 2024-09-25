@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import *
 from .forms import NastambaForm, ZivotinjaForm, ObavezaForm,NezgodaForm,TrosakForm
+from django.views.decorators.http import require_POST
 from django.contrib.auth.views import LoginView
 # Create your views here.
 
@@ -55,6 +56,12 @@ def nastamba_archive(request, id):
     nastamba.save()
     return redirect('nastamba_list')
 
+@require_POST
+def nastamba_delete(request, id):
+    nastamba = get_object_or_404(Nastamba, id=id)
+    nastamba.delete()
+    return redirect('nastamba_list')
+
 def zivotinja_list(request):
     zivotinje = Zivotinja.objects.filter(arhiviran=False)  # Prikazuje samo aktivne životinje
     if request.method == "POST":
@@ -102,6 +109,12 @@ def arhivirane_zivotinje(request):
     arhivirane = Zivotinja.objects.filter(arhiviran=True)
     return render(request, 'arhivirane_zivotinje.html', {'arhivirane': arhivirane})
 
+@require_POST
+def zivotinja_delete(request, id):
+    zivotinja = get_object_or_404(Zivotinja, id=id, arhiviran=True)
+    zivotinja.delete()
+    return redirect('arhivirane_zivotinje')
+
 def report_zivotinje(request):
     
     zivotinja_values = Zivotinja.objects.filter(arhiviran=False)# Get all Zivotinja instances
@@ -142,6 +155,12 @@ def radnik_detail(request, id):
     radnik = get_object_or_404(Radnik, id=id)
     return render(request, 'radnik_detail.html', {'radnik': radnik})
 
+@require_POST
+def radnik_delete(request, id):
+    radnik = get_object_or_404(Radnik, id=id)
+    radnik.delete()
+    return redirect('radnik_list')
+
 def obaveza_list(request):
     obaveze = Obaveza.objects.all()
     return render(request, 'obaveza_list.html', {'obaveze': obaveze})
@@ -163,6 +182,12 @@ def obaveza_complete(request, id):
     obaveza.save()
     return redirect('obaveza_list')
 
+@require_POST
+def obaveza_delete(request, id):
+    obaveza = get_object_or_404(Obaveza, id=id)
+    obaveza.delete()
+    return redirect('obaveza_list')  # Preusmjeri na glavni popis obaveza
+
 def izvjesca(request):
     return render(request,'Izvjesca.html')
 
@@ -183,7 +208,6 @@ def trosak_create(request):
     else:
         form = TrosakForm()
     return render(request, 'trosak_form.html', {'form': form})
-
 
 
 def nezgoda_create(request):
