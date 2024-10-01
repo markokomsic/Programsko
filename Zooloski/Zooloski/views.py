@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import *
-from .forms import NastambaForm, ZivotinjaForm, ObavezaForm,NezgodaForm,TrosakForm
+from .forms import NastambaForm, ZivotinjaForm, ObavezaForm, NezgodaForm, TrosakForm, RadnikForm
 from django.views.decorators.http import require_POST
 from django.contrib.auth.views import LoginView
 # Create your views here.
@@ -154,6 +154,16 @@ def radnik_list(request):
 def radnik_detail(request, id):
     radnik = get_object_or_404(Radnik, id=id)
     return render(request, 'radnik_detail.html', {'radnik': radnik})
+
+def radnik_create(request):
+    if request.method == 'POST':
+        form = RadnikForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('radnik_list')
+    else:
+        form = RadnikForm()
+    return render(request, 'radnik_form.html', {'form': form})
 
 @require_POST
 def radnik_delete(request, id):

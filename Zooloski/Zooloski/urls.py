@@ -21,6 +21,7 @@ urlpatterns = [
 
     path('radnici/', views.radnik_list, name='radnik_list'),
     path('radnici/<int:id>', views.radnik_detail, name='radnik_detail'),
+    path('radnici/dodaj/', views.radnik_create, name='radnik_create'),
     path('radnici/<int:id>/delete', views.radnik_delete, name='radnik_delete'),
 
     path('obaveze/', views.obaveza_list, name='obaveza_list'),

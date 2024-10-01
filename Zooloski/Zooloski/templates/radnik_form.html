@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Dodaj novog radnika</h2>
+
+    <form method="POST" class="card p-4 shadow-sm">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary">Spremi radnika</button>
+            <a href="{% url 'radnik_list' %}" class="btn btn-secondary">Natrag na popis radnika</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Center the container and add spacing */
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Style the card */
+    .card {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        border: none;
+    }
+
+    /* Styling the buttons */
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        text-decoration: none;
+    }
+
+    .btn-secondary {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}

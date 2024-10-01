@@ -4,6 +4,8 @@
 {% block content %}
 <div class="container mt-5">
     <h2 class="text-center mb-4">Popis Radnika</h2>
+
+    {% if radnici %}
     <ul class="list-group">
         {% for radnik in radnici %}
         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -19,8 +21,16 @@
         </li>
         {% endfor %}
     </ul>
+    {% else %}
+    <div class="alert alert-info text-center">
+        Trenutno nema radnika. <br>
+        <a href="{% url 'radnik_create' %}" class="btn btn-primary mt-3">Dodaj prvog radnika</a>
+    </div>
+    {% endif %}
 </div>
-
+<div class="text-center mt-4">
+    <a href="{% url 'radnik_create' %}" class="btn btn-primary">Dodaj novog radnika</a>
+</div>
 <style>
     /* Styling the list */
     .list-group-item {
@@ -48,9 +58,21 @@
         transform: translateY(-2px);
     }
 
+    /* Styling the buttons */
+    .btn-primary {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
     .btn-danger {
         padding: 5px 10px;
         font-size: 14px;
+    }
+
+    /* Styling the alert box */
+    .alert {
+        font-size: 18px;
+        margin-top: 20px;
     }
 </style>
 {% endblock %}
